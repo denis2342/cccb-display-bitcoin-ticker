@@ -91,7 +91,8 @@ def fetch_trades(currency):
     return str(" lastest trades " + trades)
 
 def update_ticker():
-    infos =  " " * XSIZE + fetch_trades('EUR')
+    currency = 'EUR'
+    infos =  " " * XSIZE + fetch_trades(currency)
     pos = 0
     while True:
         text = infos[pos:pos+XSIZE]
@@ -99,7 +100,7 @@ def update_ticker():
         sleep(SLEEP_TICKER)
         pos+=1
         if pos == len(infos):
-            infos = fetch_trades()
+            infos = fetch_trades(currency)
             pos=0
 
 def update_header():
